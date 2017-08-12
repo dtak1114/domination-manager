@@ -200,11 +200,12 @@ function updateStatus () {
   gameStatus.yellowScore = yellowScore;
   if (gameStatus.started) {
     if (gameStatus.remainingMs - diff <= 0) {
+      let notify;
       if (redScore == yellowScore){
-        let notifyMessage = 'game was draw!!!';
+        notifyMessage = 'game was draw!!!';
       }else{
         let winner = (redScore > yellowScore) ? 'RED' : 'YELLOW';
-        let notifyMessage = 'game finished! '+ winner +' wins.';
+        notifyMessage = 'game finished! '+ winner +' wins.';
       }
       gameFinish(notifyMessage);
     } else {
