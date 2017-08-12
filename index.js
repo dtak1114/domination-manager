@@ -204,7 +204,7 @@ function updateStatus () {
         let notifyMessage = 'game was draw!!!';
       }else{
         let winner = (redScore > yellowScore) ? 'RED' : 'YELLOW';
-        let notifyMessage = 'game finished! '+ team +' wins.';
+        let notifyMessage = 'game finished! '+ winner +' wins.';
       }
       gameFinish(notifyMessage);
     } else {
@@ -557,14 +557,12 @@ pins.resetGame.on('write', function(){
 });
 
 pins.pauseGame.on('write', function(param){
+  //pauseGame 
   if(!gameStatus.started){
     console.log('you cannot pause before game start!');
     return;
   }
-  if(param == 0){
-    console.log('game resume');
-    gameStart();
-  }else if(param == 1){
+  if(param == 1){
     console.log('game pause');
     gamePause();
   }
